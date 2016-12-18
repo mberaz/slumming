@@ -1,0 +1,34 @@
+{
+    "deal": {
+        "SalesmanId":0,
+        "Sum": 150000
+    },
+    "Salesman": {
+        "id": 1
+    },
+    "Apartment": {
+        "id": 0,
+        "Street": "elem street",
+        "HouseNumber": 666,
+        "CityId": 1,
+        "StateId": 1,
+        "Appartment": 1,
+        "Floor": 4,
+        "Name": "random",
+        "OwnerName": "some guy",
+        "Price": 150000,
+        "IsInsured": true,
+        "ClientId": 0
+
+
+
+    },
+    "Client": {
+        "Id": 0,
+        "Name": "the man",
+        "IsBusiness": false,
+        "BillingAdsress": "Billing Adsress 1"
+    }
+}
+
+ 
