@@ -40,7 +40,7 @@ namespace Slumming.Controllers
         public async Task<Client> Get(int id)
         {
             var connection = configuration["Data:SlummingConnection:ConnectionString"];
-
+            clientService = new ClientService(connection);
             return await clientService.Get(id);
         }
 

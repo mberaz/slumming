@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Slumming.DAL.Repositories;
 
 namespace Slumming.Services
 {
@@ -15,6 +17,11 @@ namespace Slumming.Services
         public ClientService(IClientRepository clientRepository)
         {
             _clientRepository = clientRepository;
+        }
+
+        public ClientService(string connection)
+        {
+            _clientRepository = new ClientRepository(new SlummingContext(connection));
         }
 
         public async Task<IEnumerable<Client>> GetAll()

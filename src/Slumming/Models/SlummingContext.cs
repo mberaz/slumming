@@ -13,8 +13,18 @@ namespace Slumming.Models
         public virtual DbSet<Salesman> Salesman { get; set; }
         public virtual DbSet<State> State { get; set; }
 
+        //var optionsBuilder = new DbContextOptionsBuilder<SlummingContext>().UseSqlServer(connection);
+        //_clientRepository = new ClientRepository(new SlummingContext(optionsBuilder.Options));
+        public SlummingContext(DbContextOptions<SlummingContext> options)
+        : base(options)
+        { }
+        //_clientRepository = new ClientRepository(new SlummingContext(connection));
+        public SlummingContext(string connection) : base(new DbContextOptionsBuilder<SlummingContext>().UseSqlServer(connection).Options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {          
+        {
             optionsBuilder.UseSqlServer(@"data source=.\bearon2017;initial catalog=Slumming;user id=sa;password=sNET135!;MultipleActiveResultSets=True;App=EntityFramework");
         }
 
