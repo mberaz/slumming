@@ -33,6 +33,9 @@ namespace Slumming
             var connection = Configuration["Data:SlummingConnection:ConnectionString"];
             services.AddDbContext<SlummingContext>(options => options.UseSqlServer(connection));
 
+            services.AddSingleton<IConfiguration>(Configuration);
+
+
             services.AddTransient<IClientRepository, ClientRepository>();
             services.AddTransient<IStateRepository, StateRepository>();
             services.AddTransient<ICityRepository, CityRepository>();

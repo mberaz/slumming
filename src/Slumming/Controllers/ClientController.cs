@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Slumming.Models;
 using Slumming.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace Slumming.Controllers
 {
@@ -12,10 +13,12 @@ namespace Slumming.Controllers
     public class ClientController : Controller
     {
         private IClientService clientService;
+        private IConfiguration configuration;
 
-        public ClientController(IClientService _clientService)
+        public ClientController(IClientService _clientService, IConfiguration _configuration)
         {
             clientService = _clientService;
+            configuration = _configuration;
         }
 
         //GET api/values
@@ -36,6 +39,8 @@ namespace Slumming.Controllers
         [HttpGet("{id}")]
         public async Task<Client> Get(int id)
         {
+            var connection = configuration["Data:SlummingConnection:ConnectionString"];
+
             return await clientService.Get(id);
         }
 
